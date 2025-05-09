@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pendaftaran - Lumia Bootstrap Template</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <!-- Navbar -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Lumia</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html #hero">Beranda</a></li>
+          <li><a href="index.html #about">Tentang</a></li>
+          <li><a href="index.html #services">Pelatihan</a></li>
+          <li><a href="index.html #schedule">Jadwal</a></li>
+          <li><a href="index.html #team">Ulasan Pengguna</a></li>
+          <li><a href="index.html #contact">Kontak</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Title -->
+  <div class="page-title light-background">
+    <div class="container">
+      <h1 class="mb-1 text-center">Form Pendaftaran</h1>
+      <nav class="breadcrumbs d-inline-block w-100">
+        <ol class="breadcrumb justify-content-end mb-0">
+          <li><a href="index.html">Beranda</a></li>
+          <li class="current">Form Pendaftaran</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Formulir Pendaftaran -->
+  <section id="pendaftaran-form" class="pendaftaran-form section pt-2" style="background-color: #f8f9fa;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="zoom-in" data-aos-delay="100">
+          <form onsubmit="sendToWhatsApp(); return false;" class="row gy-3 p-4 shadow rounded bg-white">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Nama Lengkap</label>
+              <input type="text" class="form-control shadow-sm rounded" id="name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control shadow-sm rounded" id="email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Nomor Telepon</label>
+              <input type="text" class="form-control shadow-sm rounded" id="phone" required>
+            </div>
+            <div class="col-md-6">
+              <label for="program" class="form-label">Pilih Program Pelatihan</label>
+              <select class="form-select shadow-sm rounded" id="program" required>
+                <option value="" disabled selected>-- Pilih Program --</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Product Management">Product Management</option>
+                <option value="Marketing">Digital Marketing</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Data Science">Data Science</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">Pesan Tambahan</label>
+              <textarea class="form-control shadow-sm rounded" id="message" rows="4"></textarea>
+            </div>
+            <div class="col-12 text-center mt-3">
+              <button type="submit" class="btn btn-primary px-4 py-2 shadow-sm rounded-pill">Kirim via WhatsApp</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script untuk Kirim Formulir ke WhatsApp -->
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const program = document.getElementById("program").value;
+      const message = document.getElementById("message").value;
+
+      const adminNumber = "6285895444350"; // Ganti dengan nomor admin tujuan (tanpa +)
+      const text = `Halo Admin! Saya ingin mendaftar pelatihan:\n\n` +
+        `Nama: ${name}\nEmail: ${email}\nNo. Telepon: ${phone}\n` +
+        `Program: ${program}\nPesan: ${message}`;
+
+      const encodedText = encodeURIComponent(text);
+      const waUrl = `https://wa.me/${adminNumber}?text=${encodedText}`;
+      window.open(waUrl, '_blank');
+    }
+  </script>
+
+  <!-- Script Vendor -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
